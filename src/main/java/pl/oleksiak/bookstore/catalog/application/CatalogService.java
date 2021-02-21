@@ -12,13 +12,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 class CatalogService implements CatalogUseCase {
 
     private final CatalogRepository repository;
-
-    public CatalogService(CatalogRepository repository) {
-        this.repository = repository;
-    }
 
     @Override
     public List<Book> findByTitle(String title) {
@@ -39,8 +36,9 @@ class CatalogService implements CatalogUseCase {
     }
 
     @Override
-    public void addBook() {
-
+    public void addBook(CreateCommandBook command) {
+        final Book build = Book.builder().title(command.getTitle()).author(command.getAuthor()).year(command.getYear()).build();
+        repository.save(build);
     }
 
     @Override

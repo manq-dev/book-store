@@ -2,13 +2,13 @@ package pl.oleksiak.bookstore.catalog.domain;
 
 import lombok.*;
 
-@ToString
-@Getter
-@RequiredArgsConstructor
+@Data
+@AllArgsConstructor
+@Builder
 public class Book {
 
-    private final Long id;
-    private final String title;
-    private final String author;
-    private final Integer year;
+    private Long id;
+    private String title;
+    private String author;
+    private Integer year;
 }

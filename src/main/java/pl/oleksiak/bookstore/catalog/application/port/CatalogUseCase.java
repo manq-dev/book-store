@@ -1,5 +1,7 @@
 package pl.oleksiak.bookstore.catalog.application.port;
 
+import lombok.Builder;
+import lombok.Value;
 import pl.oleksiak.bookstore.catalog.domain.Book;
 
 import java.util.List;
@@ -12,9 +14,17 @@ public interface CatalogUseCase {
 
     Optional<Book> findOneByTitleAndAuthor(String title, String author);
 
-    void addBook();
+    void addBook(CreateCommandBook command);
 
     void removeById(Long id);
 
     void updateBook();
+
+    @Value
+    @Builder
+    class CreateCommandBook {
+        String title;
+        String author;
+        Integer year;
+    }
 }
