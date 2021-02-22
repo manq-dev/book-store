@@ -24,10 +24,10 @@ public class ApplicationStartup implements CommandLineRunner {
     }
 
     private void initData() {
-        catalogService.addBook(CatalogUseCase.CreateCommandBook.builder().year(1990).title("Pan Tadeusz").author("Adam Mickiewicz").build());
-        catalogService.addBook(CatalogUseCase.CreateCommandBook.builder().year(1990).title("Ogniem i Mieczem").author("Henryk Sienkiewicz").build());
-        catalogService.addBook(CatalogUseCase.CreateCommandBook.builder().year(1990).title("Pan Wołodyjowski").author("Henryk Sienkiewicz").build());
-        catalogService.addBook(CatalogUseCase.CreateCommandBook.builder().year(1990).title("Sezon Burz").author("Andrzej Sapkowski").build());
+        catalogService.addBook(CatalogUseCase.CreateBookCommand.builder().year(1990).title("Pan Tadeusz").author("Adam Mickiewicz").build());
+        catalogService.addBook(CatalogUseCase.CreateBookCommand.builder().year(1990).title("Ogniem i Mieczem").author("Henryk Sienkiewicz").build());
+        catalogService.addBook(CatalogUseCase.CreateBookCommand.builder().year(1990).title("Pan Wołodyjowski").author("Henryk Sienkiewicz").build());
+        catalogService.addBook(CatalogUseCase.CreateBookCommand.builder().year(1990).title("Sezon Burz").author("Andrzej Sapkowski").build());
 
     }
 

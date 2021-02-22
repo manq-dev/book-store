@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Value;
 import pl.oleksiak.bookstore.catalog.domain.Book;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,17 +15,35 @@ public interface CatalogUseCase {
 
     Optional<Book> findOneByTitleAndAuthor(String title, String author);
 
-    void addBook(CreateCommandBook command);
+    void addBook(CreateBookCommand command);
 
     void removeById(Long id);
 
-    void updateBook();
+    UpdateBookResponse updateBook(UpdateBookCommand command);
 
     @Value
     @Builder
-    class CreateCommandBook {
+    class CreateBookCommand {
         String title;
         String author;
         Integer year;
+    }
+
+    @Value
+    @Builder
+    class UpdateBookCommand {
+        Long id;
+        String title;
+        String author;
+        Integer year;
+    }
+
+    @Value
+    @Builder
+    class UpdateBookResponse {
+        public static UpdateBookResponse SUCCESS = UpdateBookResponse.builder().success(true).errors(Collections.emptyList()).build();
+
+        boolean success;
+        List<String> errors;
     }
 }
